@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E '\\\\.\\(html|css|js|jsx|ts|tsx|vue|svelte\\)$')",
+      "Bash(python3 *)",
+      "Bash(node --check /home/drojas/Logistic_dos/js/main.js)",
+      "Bash(sed -n '1,15p' /home/drojas/Logistic_dos/js/main.js)",
+      "Bash(sed -n '160,230p' /home/drojas/Logistic_dos/js/main.js)",
+      "Bash(npm install *)",
+      "Bash(nodejs --version)",
+      "Bash(command -v nvm fnm npx snap)",
+      "Read(//usr/local/bin/**)",
+      "Bash(command -v cwebp convert)",
+      "Bash(pip3 install *)",
+      "Bash(sudo apt-get *)",
+      "Bash(command -v ffmpeg magick mogrify vips)",
+      "Bash(snap list *)",
+      "Bash(sudo snap *)",
+      "Bash(sudo DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs npm)",
+      "Bash(mkdir -p /home/drojas/Logistic_dos/fonts/fa)",
+      "Bash(curl -fsSL -o fa-solid-900.woff2 \"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-solid-900.woff2\")",
+      "Bash(curl -fsSL -o fa-brands-400.woff2 \"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-brands-400.woff2\")",
+      "Bash(curl -fsSL \"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css\" -o /tmp/fa-all.min.css)",
+      "Read(//tmp/**)",
+      "Bash(awk '/font-family: .Inter/,/unicode-range: U\\\\+0000/')",
+      "Bash(npm run *)",
+      "Bash(node --check /home/drojas/Logistic_dos/js/main.min.js)",
+      "Bash(grep -oP '\\(:root|:host\\),[^}]*\\\\{[^}]*\\\\}' /home/drojas/Logistic_dos/css/fontawesome.css)",
+      "Bash(grep *)",
+      "Bash(sed 's/\\($//')",
+      "Bash(node --check /home/drojas/Logistic_dos/js/tracking-worker.js)",
+      "Bash(node --check /home/drojas/Logistic_calro/js/main.js)",
+      "Bash(node *)"
+    ]
+  }
+}

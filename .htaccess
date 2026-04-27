@@ -1,0 +1,40 @@
+# ─── Compression ────────────────────────────────────────────
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript application/json image/svg+xml font/woff2
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml font/woff2 font/woff
+</IfModule>
+
+# ─── Cache-Control ───────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML — revalidar siempre
+  ExpiresByType text/html                    "access plus 0 seconds"
+
+  # CSS / JS — 1 año (usar hash en nombre de archivo para cache-busting)
+  ExpiresByType text/css                     "access plus 1 year"
+  ExpiresByType application/javascript       "access plus 1 year"
+
+  # Fuentes — inmutable
+  ExpiresByType font/woff2                   "access plus 1 year"
+  ExpiresByType font/woff                    "access plus 1 year"
+  ExpiresByType application/font-woff2       "access plus 1 year"
+
+  # Imágenes
+  ExpiresByType image/webp                   "access plus 6 months"
+  ExpiresByType image/png                    "access plus 6 months"
+  ExpiresByType image/jpeg                   "access plus 6 months"
+  ExpiresByType image/svg+xml                "access plus 6 months"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Inmutable para assets con hash
+  <FilesMatch "\.(min\.css|min\.js|woff2|woff)$">
+    Header append Cache-Control "immutable"
+  </FilesMatch>
+  # Seguridad
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
