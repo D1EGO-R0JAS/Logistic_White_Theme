@@ -1024,7 +1024,7 @@ body.is-loading #hero::after { opacity: 1; }
   display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
   gap:clamp(26px,4vw,50px);
 }
-.footer-logo   { height:42px; margin-bottom:16px; }
+.footer-logo   { height:62px; margin-bottom:16px; }
 .footer-tagline{ font-size:.87rem; color:var(--gray-pale); line-height:1.72; max-width:290px; }
 .contact-list  { margin-top:20px; display:flex; flex-direction:column; gap:10px; }
 .contact-item  { display:flex; align-items:flex-start; gap:9px; font-size:.83rem; color:var(--gray-pale); }
