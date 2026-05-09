@@ -554,6 +554,73 @@ function initSvcFlip() {
   ? requestIdleCallback(initSvcFlip, { timeout: 2000 })
   : setTimeout(initSvcFlip, 0);
 
+/* ── Barco hero: oculta texto hasta que atraca ─────────────── */
+(function initBarcoAnimation() {
+  const mq       = window.matchMedia('(min-width: 1024px)');
+  const mqMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const barco    = document.getElementById('hero-barco');
+  const hero     = document.getElementById('hero');
+  if (!barco || !hero) return;
+
+  const h1      = hero.querySelector('.hero-h1');
+  const stats   = hero.querySelector('.hero-stats');
+  const content = hero.querySelector('.hero-content');
+
+  function hideText() {
+    if (h1)    { h1.style.opacity = '0';    h1.style.animation    = 'none'; }
+    if (stats) { stats.style.opacity = '0'; stats.style.animation = 'none'; }
+    if (content) {
+      content.style.maxWidth    = '55%';
+      content.style.marginLeft  = 'auto';
+      content.style.marginRight = '0';
+    }
+  }
+
+  function showText() {
+    if (h1) {
+      h1.style.transition = 'opacity 1s ease 0.3s';
+      h1.style.opacity    = '1';
+    }
+    if (stats) {
+      stats.style.transition = 'opacity 1s ease 0.3s';
+      stats.style.opacity    = '1';
+    }
+  }
+
+  function resetText() {
+    if (h1)      { h1.style.cssText      = ''; }
+    if (stats)   { stats.style.cssText   = ''; }
+    if (content) { content.style.cssText = ''; }
+  }
+
+  function onBarcoEnd() {
+    if (hero.classList.contains('hero-animate-done')) return;
+    hero.classList.add('hero-animate-done');
+    showText();
+  }
+
+  function attachListener() {
+    hideText();
+    if (mqMotion.matches) {
+      showText();
+    } else {
+      barco.addEventListener('animationend', onBarcoEnd, { once: true });
+      setTimeout(onBarcoEnd, 6500); /* respaldo: 5.5s animación + 1s buffer */
+    }
+  }
+
+  if (mq.matches) attachListener();
+
+  mq.addEventListener('change', function(e) {
+    if (e.matches) {
+      if (!hero.classList.contains('hero-animate-done')) attachListener();
+    } else {
+      hero.classList.remove('hero-animate-done');
+      resetText();
+    }
+  });
+})();
+
 /* Tracking Carga */
 const API_URL = "https://script.google.com/macros/s/AKfycbwMrwRk9FSjZcV9RuYzewb0ccrZG2n9XXF_nT28d0mIOwNj5WdL1L_zGnswLauvYm1O/exec";
 
