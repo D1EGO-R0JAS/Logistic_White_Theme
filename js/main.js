@@ -622,7 +622,7 @@ function initSvcFlip() {
 })();
 
 /* Tracking Carga */
-const API_URL = "https://script.google.com/macros/s/AKfycbwMrwRk9FSjZcV9RuYzewb0ccrZG2n9XXF_nT28d0mIOwNj5WdL1L_zGnswLauvYm1O/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzQNWEp-NofWtc_Tn2I3Ut8xbYSG8VxiTxOdqBD_cPb6QGa5sffELtiWJJsR3m3N1af/exec";
 
 const CAMPOS_META = ["CLIENTE", "CANAL", "TIPO_SERVICIO", "PROCESO"];
 
